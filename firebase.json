@@ -1,0 +1,14 @@
+{
+    "flutter": {
+        "platforms": {
+            "dart": {
+                "lib/firebase_options.dart": {
+                    "projectId": "yjm-wedding-5898b",
+                    "configurations": {
+                        "web": "1:82799871306:web:77806688bf8d7148de6db3"
+                    }
+                }
+            }
+        }
+    }
+}
