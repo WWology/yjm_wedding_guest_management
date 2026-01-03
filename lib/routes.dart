@@ -1,19 +1,14 @@
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:yjm_wedding_guest_management/app_shell.dart';
 
-import 'home_page.dart';
+import 'app_shell.dart';
+import 'home/home_page.dart';
 
 part 'routes.g.dart';
 
 final GlobalKey<NavigatorState> shellNavigatorKey = GlobalKey<NavigatorState>();
 
-final router = GoRouter(
-  routes: $appRoutes,
-  // initialLocation: FirebaseAuth.instance.currentUser == null ? '/login' : '/',
-  initialLocation: '/home',
-);
+final router = GoRouter(routes: $appRoutes, initialLocation: '/home');
 
 @TypedShellRoute<AppShellRouteData>(
   routes: <TypedRoute<RouteData>>[TypedGoRoute<HomeRouteData>(path: '/home')],
