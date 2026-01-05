@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
-import 'routes.dart';
+import '../routes.dart';
 
 class AppShell extends StatefulWidget {
   const AppShell({required this.child, super.key});

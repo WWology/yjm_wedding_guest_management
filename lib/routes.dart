@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import 'app_shell.dart';
-import 'home/home_page.dart';
+import 'common/app_shell.dart';
+import 'pages/home/home_page.dart';
 
 part 'routes.g.dart';
 
