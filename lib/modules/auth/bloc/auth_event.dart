@@ -1,6 +1,9 @@
 part of 'auth_bloc.dart';
 
 @freezed
-class AuthEvent with _$AuthEvent {
-  const factory AuthEvent.started() = _Started;
+sealed class AuthEvent with _$AuthEvent {
+  const factory AuthEvent.userSubscriptionRequested() =
+      UserSubscriptionRequested;
+
+  const factory AuthEvent.logOutRequested() = LogOutRequested;
 }
