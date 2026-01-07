@@ -8,9 +8,7 @@
             "name": "Flutter",
             "request": "launch",
             "type": "dart",
-            "args": [
-                "--wasm"
-            ]
+            "flutterMode": "debug",
         },
         {
             "name": "yjm_wedding_guest_management",

@@ -15,13 +15,13 @@ class _AppShellState extends State<AppShell> {
   int _selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
-    final largeScreen = ResponsiveBreakpoints.of(context).largerThan(TABLET);
+    final isLargeScreen = ResponsiveBreakpoints.of(context).largerThan(TABLET);
 
     return SafeArea(
       child: Scaffold(
         body: Row(
           children: [
-            if (largeScreen)
+            if (isLargeScreen)
               NavigationRail(
                 groupAlignment: -0.9,
                 destinations: const [
@@ -42,7 +42,7 @@ class _AppShellState extends State<AppShell> {
 
                   switch (index) {
                     case 0:
-                      HomeRouteData().go(context);
+                      HomeRoute().go(context);
                     case 1:
                     // TODO
                   }
@@ -56,7 +56,7 @@ class _AppShellState extends State<AppShell> {
           onPressed: () {},
           child: const Icon(Icons.add),
         ),
-        bottomNavigationBar: largeScreen
+        bottomNavigationBar: isLargeScreen
             ? null
             : NavigationBar(
                 destinations: [
@@ -76,7 +76,7 @@ class _AppShellState extends State<AppShell> {
                   });
                   switch (index) {
                     case 0:
-                      HomeRouteData().go(context);
+                      HomeRoute().go(context);
                     case 1:
                     // TODO
                   }
