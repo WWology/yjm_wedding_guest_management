@@ -18,6 +18,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     : _authService = authService,
       super(const .unauthenticated()) {
     on<UserSubscriptionRequested>(_onUserSubscriptionRequested);
+    on<LoginRequested>(_onLoginRequested);
     on<LogOutRequested>(_onLogOutRequested);
   }
 
@@ -30,6 +31,20 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       onData: (user) => emit(.authenticated(user)),
       onError: addError,
     );
+  }
+
+  FutureOr<void> _onLoginRequested(
+    LoginRequested event,
+    Emitter<AuthState> emit,
+  ) async {
+    try {
+      await _authService.loginWithEmailAndPassword(
+        email: event.email,
+        password: event.password,
+      );
+    } on LoginWithEmailAndPasswordFailure catch (e) {
+      emit(.unauthenticated(message: e.message));
+    }
   }
 
   FutureOr<void> _onLogOutRequested(
