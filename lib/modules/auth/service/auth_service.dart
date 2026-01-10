@@ -146,6 +146,26 @@ class LoginWithEmailAndPasswordFailure implements Exception {
         return const LoginWithEmailAndPasswordFailure(
           'Incorrect password, please try again.',
         );
+      case 'too-many-requests':
+        return const LoginWithEmailAndPasswordFailure(
+          'Too many requests. Try again later.',
+        );
+      case 'user-token-expired':
+        return const LoginWithEmailAndPasswordFailure(
+          'User token has expired. Please log in again.',
+        );
+      case 'network-request-failed':
+        return const LoginWithEmailAndPasswordFailure(
+          'Network error occurred. Please try again.',
+        );
+      case 'invalid-credential' || 'INVALID_LOGIN_CREDENTIALS':
+        return const LoginWithEmailAndPasswordFailure(
+          'The credential is invalid or has expired.',
+        );
+      case 'operation-not-allowed':
+        return const LoginWithEmailAndPasswordFailure(
+          'Operation is not allowed. Please contact support.',
+        );
       default:
         return const LoginWithEmailAndPasswordFailure();
     }
