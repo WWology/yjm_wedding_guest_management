@@ -16,7 +16,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
   AuthBloc({required AuthService authService})
     : _authService = authService,
-      super(const .unauthenticated()) {
+      super(const .initial()) {
     on<UserSubscriptionRequested>(_onUserSubscriptionRequested);
     on<LoginRequested>(_onLoginRequested);
     on<LogOutRequested>(_onLogOutRequested);
