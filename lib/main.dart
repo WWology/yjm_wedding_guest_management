@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
+import 'bloc_observer.dart';
 import 'firebase_options.dart';
 import 'modules/auth/auth.dart';
 import 'routes.dart';
@@ -14,7 +15,8 @@ void main() async {
 
   usePathUrlStrategy();
   final authService = AuthService();
-  await authService.user.first;
+
+  Bloc.observer = const AppBlocObserver();
   runApp(App(authService: authService));
 }
 
