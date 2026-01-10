@@ -11,9 +11,13 @@
             "flutterMode": "debug",
         },
         {
-            "name": "yjm_wedding_guest_management",
+            "name": "WASM",
             "request": "launch",
-            "type": "dart"
+            "type": "dart",
+            "flutterMode": "debug",
+            "args": [
+                "--wasm"
+            ]
         },
         {
             "name": "yjm_wedding_guest_management (profile mode)",
