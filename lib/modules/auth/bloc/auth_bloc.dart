@@ -39,10 +39,12 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     Emitter<AuthState> emit,
   ) async {
     try {
+      emit(const .loading());
       await _authService.loginWithEmailAndPassword(
         email: event.email,
         password: event.password,
       );
+      emit(.authenticated(_authService.currentUser!));
     } on LoginWithEmailAndPasswordFailure catch (e) {
       emit(.unauthenticated(message: e.message));
     }
@@ -52,6 +54,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     LogOutRequested event,
     Emitter<AuthState> emit,
   ) async {
+    emit(const .loading());
     await _authService.logOut();
     emit(const .unauthenticated());
   }

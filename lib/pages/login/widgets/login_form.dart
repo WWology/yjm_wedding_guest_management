@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../routes.dart';
 import '../../../modules/auth/auth.dart';
 
 class LoginForm extends StatelessWidget {
@@ -110,15 +111,41 @@ class LoginForm extends StatelessWidget {
             ),
             const SizedBox(height: 16),
             // Login Button
-            Builder(
-              builder: (context) {
-                return FilledButton.icon(
-                  onPressed: () {
-                    final formState = Form.of(context);
+            BlocConsumer<AuthBloc, AuthState>(
+              listenWhen: (previous, current) => previous is Loading,
+              listener: (context, state) {
+                if (state case Unauthenticated(
+                  :final message,
+                ) when message != null) {
+                  ScaffoldMessenger.of(
+                    context,
+                  ).showSnackBar(SnackBar(content: Text(message)));
+                } else if (state is Authenticated) {
+                  HomeRoute().go(context);
+                }
+              },
+              builder: (context, state) {
+                if (state is Loading) {
+                  return const CircularProgressIndicator();
+                }
+
+                return Builder(
+                  builder: (context) {
+                    return FilledButton.icon(
+                      onPressed: () {
+                        final formState = Form.of(context);
+                        if (formState.validate()) {
+                          formState.save();
+                          context.read<AuthBloc>().add(
+                            .loginRequested(email: email!, password: password!),
+                          );
+                        }
+                      },
+                      label: const Text('Login'),
+                      icon: const Icon(Icons.login),
+                      style: ButtonStyle(),
+                    );
                   },
-                  label: const Text('Login'),
-                  icon: const Icon(Icons.login),
-                  style: ButtonStyle(),
                 );
               },
             ),
