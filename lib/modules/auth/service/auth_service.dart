@@ -11,15 +11,15 @@ class AuthService {
   final fba.FirebaseAuth _firebaseAuth;
   final GoogleSignIn _googleSignin;
 
-  Stream<User> get user {
+  Stream<User?> get user {
     return _firebaseAuth.authStateChanges().map((firebaseUser) {
-      final user = firebaseUser == null ? User.empty : firebaseUser.toUser;
+      final user = firebaseUser?.toUser;
       return user;
     });
   }
 
-  User get currentUser {
-    return fba.FirebaseAuth.instance.currentUser?.toUser ?? User.empty;
+  User? get currentUser {
+    return fba.FirebaseAuth.instance.currentUser?.toUser;
   }
 
   Future<void> signUp({required String email, required String password}) async {

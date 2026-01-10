@@ -8,6 +8,4 @@ abstract class User with _$User {
   const factory User({required String id, String? email, String? name}) = _User;
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
-
-  static const empty = User(id: '');
 }

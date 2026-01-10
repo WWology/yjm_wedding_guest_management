@@ -26,11 +26,12 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     UserSubscriptionRequested event,
     Emitter<AuthState> emit,
   ) async {
-    return emit.onEach(
-      _authService.user,
-      onData: (user) => emit(.authenticated(user)),
-      onError: addError,
-    );
+    final user = _authService.currentUser;
+    if (user != null) {
+      emit(.authenticated(user));
+    } else {
+      emit(const .unauthenticated());
+    }
   }
 
   FutureOr<void> _onLoginRequested(
