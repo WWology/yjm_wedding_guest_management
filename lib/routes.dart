@@ -15,12 +15,16 @@ final router = GoRouter(
   routes: $appRoutes,
   initialLocation: '/home',
   redirect: (context, state) {
-    final bool isLoggedIn = context.read<AuthBloc>().state is Authenticated;
+    final authState = context.read<AuthBloc>().state;
     final inLoginPage = state.matchedLocation == LoginRoute().location;
-    if (!isLoggedIn && !inLoginPage) {
+
+    // Redirect to Login page if not authenticated & not already in Login page
+    if (authState is! Authenticated && !inLoginPage) {
       return LoginRoute().location;
     }
-    if (isLoggedIn && inLoginPage) {
+
+    // Redirect to Home page if authenticated & in Login page
+    if (authState is Authenticated && inLoginPage) {
       return HomeRoute().location;
     }
     return null;
@@ -34,7 +38,6 @@ final router = GoRouter(
 class AppShellRoute extends ShellRouteData {
   const AppShellRoute();
 
-  static final GlobalKey<NavigatorState> $navigatorKey = shellNavigatorKey;
   @override
   Widget builder(BuildContext context, GoRouterState state, Widget navigator) {
     return AppShell(child: navigator);
