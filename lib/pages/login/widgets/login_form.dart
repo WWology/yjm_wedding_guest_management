@@ -68,6 +68,7 @@ class LoginForm extends StatelessWidget {
                     return null;
                   },
                   autovalidateMode: .onUserInteraction,
+                  textInputAction: .next,
                 );
               },
             ),
@@ -106,6 +107,16 @@ class LoginForm extends StatelessWidget {
                     return null;
                   },
                   autovalidateMode: .onUserInteraction,
+                  textInputAction: .done,
+                  onFieldSubmitted: (_) {
+                    final formState = Form.of(context);
+                    if (formState.validate()) {
+                      formState.save();
+                      context.read<AuthBloc>().add(
+                        .loginRequested(email: email!, password: password!),
+                      );
+                    }
+                  },
                 );
               },
             ),
