@@ -7,18 +7,21 @@ class AppShell extends StatefulWidget {
   const AppShell({required this.child, super.key});
 
   final Widget child;
+
   @override
   State<AppShell> createState() => _AppShellState();
 }
 
 class _AppShellState extends State<AppShell> {
   int _selectedIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     final isLargeScreen = ResponsiveBreakpoints.of(context).largerThan(TABLET);
 
     return SafeArea(
       child: Scaffold(
+        appBar: isLargeScreen ? null : AppBar(title: const Text('My App')),
         body: Row(
           children: [
             if (isLargeScreen)
@@ -48,13 +51,20 @@ class _AppShellState extends State<AppShell> {
                   }
                 },
               ),
-            const VerticalDivider(thickness: 1, width: 1),
-            Expanded(child: widget.child),
+            Expanded(
+              child: Scaffold(
+                appBar: isLargeScreen
+                    ? AppBar(title: const Text('My App'))
+                    : null,
+                body: widget.child,
+              ),
+            ),
           ],
         ),
-        floatingActionButton: FloatingActionButton.large(
+        floatingActionButton: FloatingActionButton.extended(
           onPressed: () {},
-          child: const Icon(Icons.add),
+          label: const Text('Add a guest'),
+          icon: Icon(Icons.person_add),
         ),
         bottomNavigationBar: isLargeScreen
             ? null
