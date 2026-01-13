@@ -12,7 +12,7 @@ final GlobalKey<NavigatorState> shellNavigatorKey = GlobalKey<NavigatorState>();
 
 final router = GoRouter(
   routes: $appRoutes,
-  initialLocation: '/home',
+  initialLocation: '/guests',
   redirect: (context, state) {
     final authState = context.read<AuthBloc>().state;
     final inLoginPage = state.matchedLocation == LoginRoute().location;
@@ -24,14 +24,14 @@ final router = GoRouter(
 
     // Redirect to Home page if authenticated & in Login page
     if (authState is Authenticated && inLoginPage) {
-      return HomeRoute().location;
+      return GuestsRoute().location;
     }
     return null;
   },
 );
 
 @TypedShellRoute<AppShellRoute>(
-  routes: <TypedRoute<RouteData>>[TypedGoRoute<HomeRoute>(path: '/home')],
+  routes: <TypedRoute<RouteData>>[TypedGoRoute<GuestsRoute>(path: '/guests')],
 )
 @immutable
 class AppShellRoute extends ShellRouteData {
@@ -43,8 +43,8 @@ class AppShellRoute extends ShellRouteData {
   }
 }
 
-class HomeRoute extends GoRouteData with $HomeRoute {
-  const HomeRoute();
+class GuestsRoute extends GoRouteData with $GuestsRoute {
+  const GuestsRoute();
 
   @override
   Widget build(BuildContext context, GoRouterState state) =>

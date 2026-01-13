@@ -63,7 +63,7 @@ class _AppShellState extends State<AppShell> {
 
                   switch (index) {
                     case 0:
-                      HomeRoute().go(context);
+                      GuestsRoute().go(context);
                     case 1:
                     // TODO
                   }
@@ -108,7 +108,7 @@ class _AppShellState extends State<AppShell> {
                   });
                   switch (index) {
                     case 0:
-                      HomeRoute().go(context);
+                      GuestsRoute().go(context);
                     case 1:
                     // TODO
                   }

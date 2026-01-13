@@ -132,7 +132,7 @@ class LoginForm extends StatelessWidget {
                     context,
                   ).showSnackBar(SnackBar(content: Text(message)));
                 } else if (state is Authenticated) {
-                  HomeRoute().go(context);
+                  GuestsRoute().go(context);
                 }
               },
               builder: (context, state) {
