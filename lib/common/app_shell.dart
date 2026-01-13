@@ -24,7 +24,7 @@ class _AppShellState extends State<AppShell> {
       child: Scaffold(
         appBar: !isLargeScreen
             ? PreferredSize(
-                preferredSize: Size.fromHeight(kToolbarHeight),
+                preferredSize: Size.fromHeight(kToolbarHeight + 24.0),
                 child: SearchAppBar(),
               )
             : null,
@@ -74,7 +74,7 @@ class _AppShellState extends State<AppShell> {
               child: Scaffold(
                 appBar: isLargeScreen
                     ? PreferredSize(
-                        preferredSize: Size.fromHeight(kToolbarHeight),
+                        preferredSize: Size.fromHeight(kToolbarHeight + 24.0),
                         child: SearchAppBar(),
                       )
                     : null,
