@@ -8,6 +8,8 @@ import 'bloc_observer.dart';
 import 'firebase_options.dart';
 import 'modules/auth/auth.dart';
 import 'routes.dart';
+import 'theme.dart';
+import 'util.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -27,6 +29,10 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final brightness = View.of(context).platformDispatcher.platformBrightness;
+    final textTheme = createTextTheme(context, "Roboto", "Roboto");
+    final theme = MaterialTheme(textTheme);
+
     return BlocProvider(
       lazy: false,
       create: (_) =>
@@ -37,9 +43,7 @@ class App extends StatelessWidget {
         child: MaterialApp.router(
           routerConfig: router,
           title: 'Flutter Demo',
-          theme: ThemeData(
-            colorScheme: .fromSeed(seedColor: Colors.deepPurple),
-          ),
+          theme: brightness == Brightness.light ? theme.light() : theme.dark(),
           debugShowCheckedModeBanner: false,
           builder: (context, child) => ResponsiveBreakpoints.builder(
             breakpoints: [
