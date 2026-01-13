@@ -24,8 +24,10 @@ class LargeScreenLoginPage extends StatelessWidget {
       mainAxisAlignment: .center,
       children: [
         Expanded(
-          child: const Center(
-            child: Image(image: AssetImage('assets/images/yj_logo_white.png')),
+          child: Center(
+            child: Theme.brightnessOf(context) == Brightness.light ?
+              const Image(image: AssetImage('assets/images/yj_logo_black.png')) :
+              const Image(image: AssetImage('assets/images/yj_logo_white.png')),
           ),
         ),
         const SizedBox(width: 24),
@@ -42,10 +44,12 @@ class SmallScreenLoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const Flexible(
+        Flexible(
           flex: 1,
           child: Center(
-            child: Image(image: AssetImage('assets/images/yj_logo_white.png')),
+            child: Theme.brightnessOf(context) == Brightness.light ?
+              const Image(image: AssetImage('assets/images/yj_logo_black.png')) :
+              const Image(image: AssetImage('assets/images/yj_logo_white.png')),
           ),
         ),
         const SizedBox(height: 24),

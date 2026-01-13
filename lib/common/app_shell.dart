@@ -26,7 +26,19 @@ class _AppShellState extends State<AppShell> {
           children: [
             if (isLargeScreen)
               NavigationRail(
-                groupAlignment: -0.9,
+                extended: true,
+                leading: Theme.brightnessOf(context) == Brightness.light
+                    ? const Image(
+                        image: AssetImage('assets/images/yj_logo_black.png'),
+                        height: 128,
+                        width: 128,
+                      )
+                    : const Image(
+                        image: AssetImage('assets/images/yj_logo_white.png'),
+                        height: 128,
+                        width: 128,
+                      ),
+                groupAlignment: -0.5,
                 destinations: const [
                   NavigationRailDestination(
                     icon: Icon(Icons.home),
