@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
-import 'widgets/login_form.dart';
+import 'widgets/widgets.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -25,9 +25,13 @@ class LargeScreenLoginPage extends StatelessWidget {
       children: [
         Expanded(
           child: Center(
-            child: Theme.brightnessOf(context) == Brightness.light ?
-              const Image(image: AssetImage('assets/images/yj_logo_black.png')) :
-              const Image(image: AssetImage('assets/images/yj_logo_white.png')),
+            child: Theme.brightnessOf(context) == Brightness.light
+                ? const Image(
+                    image: AssetImage('assets/images/yj_logo_black.png'),
+                  )
+                : const Image(
+                    image: AssetImage('assets/images/yj_logo_white.png'),
+                  ),
           ),
         ),
         const SizedBox(width: 24),
@@ -47,9 +51,13 @@ class SmallScreenLoginPage extends StatelessWidget {
         Flexible(
           flex: 1,
           child: Center(
-            child: Theme.brightnessOf(context) == Brightness.light ?
-              const Image(image: AssetImage('assets/images/yj_logo_black.png')) :
-              const Image(image: AssetImage('assets/images/yj_logo_white.png')),
+            child: Theme.brightnessOf(context) == Brightness.light
+                ? const Image(
+                    image: AssetImage('assets/images/yj_logo_black.png'),
+                  )
+                : const Image(
+                    image: AssetImage('assets/images/yj_logo_white.png'),
+                  ),
           ),
         ),
         const SizedBox(height: 24),

@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:yjm_wedding_guest_management/pages/login/login_page.dart';
 
+import 'pages/pages.dart';
 import 'common/app_shell.dart';
-import 'pages/home/home_page.dart';
-import 'modules/auth/auth.dart';
+import 'modules/modules.dart';
 
 part 'routes.g.dart';
 
@@ -48,7 +47,8 @@ class HomeRoute extends GoRouteData with $HomeRoute {
   const HomeRoute();
 
   @override
-  Widget build(BuildContext context, GoRouterState state) => const HomePage();
+  Widget build(BuildContext context, GoRouterState state) =>
+      const GuestListPage();
 }
 
 @TypedGoRoute<LoginRoute>(path: '/login')
