@@ -23,9 +23,13 @@ class LargeScreenLoginPage extends StatelessWidget {
     return Row(
       mainAxisAlignment: .center,
       children: [
-        Expanded(child: Placeholder()),
+        Expanded(
+          child: const Center(
+            child: Image(image: AssetImage('assets/images/yj_logo_white.png')),
+          ),
+        ),
         const SizedBox(width: 24),
-        Expanded(child: LoginForm()),
+        const Expanded(child: LoginForm()),
       ],
     );
   }
@@ -36,10 +40,17 @@ class SmallScreenLoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        children: [Placeholder(), const SizedBox(height: 24), LoginForm()],
-      ),
+    return Column(
+      children: [
+        const Flexible(
+          flex: 1,
+          child: Center(
+            child: Image(image: AssetImage('assets/images/yj_logo_white.png')),
+          ),
+        ),
+        const SizedBox(height: 24),
+        const Expanded(flex: 1, child: LoginForm()),
+      ],
     );
   }
 }
