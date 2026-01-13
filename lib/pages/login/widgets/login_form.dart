@@ -14,8 +14,8 @@ class LoginForm extends StatelessWidget {
 
     String? email;
     String? password;
-    return SizedBox(
-      height: 300,
+    return Container(
+      margin: const EdgeInsets.only(left: 24, right: 24),
       child: Form(
         child: Column(
           mainAxisSize: .min,
