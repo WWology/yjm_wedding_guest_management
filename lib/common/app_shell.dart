@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_framework/responsive_framework.dart';
+import 'package:yjm_wedding_guest_management/common/search_app_bar.dart';
 
 import '../routes.dart';
 
@@ -21,7 +22,12 @@ class _AppShellState extends State<AppShell> {
 
     return SafeArea(
       child: Scaffold(
-        appBar: isLargeScreen ? null : AppBar(title: const Text('My App')),
+        appBar: !isLargeScreen
+            ? PreferredSize(
+                preferredSize: Size.fromHeight(kToolbarHeight),
+                child: SearchAppBar(),
+              )
+            : null,
         body: Row(
           children: [
             if (isLargeScreen)
@@ -41,8 +47,8 @@ class _AppShellState extends State<AppShell> {
                 groupAlignment: -0.5,
                 destinations: const [
                   NavigationRailDestination(
-                    icon: Icon(Icons.home),
-                    label: Text('Home'),
+                    icon: Icon(Icons.group),
+                    label: Text('Guest List'),
                   ),
                   NavigationRailDestination(
                     icon: Icon(Icons.play_arrow),
@@ -63,10 +69,14 @@ class _AppShellState extends State<AppShell> {
                   }
                 },
               ),
+            const VerticalDivider(),
             Expanded(
               child: Scaffold(
                 appBar: isLargeScreen
-                    ? AppBar(title: const Text('My App'))
+                    ? PreferredSize(
+                        preferredSize: Size.fromHeight(kToolbarHeight),
+                        child: SearchAppBar(),
+                      )
                     : null,
                 body: widget.child,
               ),
@@ -84,7 +94,7 @@ class _AppShellState extends State<AppShell> {
                 destinations: [
                   NavigationDestination(
                     icon: const Icon(Icons.home),
-                    label: 'Home',
+                    label: 'Guest List',
                   ),
                   NavigationDestination(
                     icon: const Icon(Icons.play_arrow),
