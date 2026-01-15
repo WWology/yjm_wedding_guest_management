@@ -4,12 +4,12 @@ import 'package:google_sign_in/google_sign_in.dart';
 import '../model/user.dart';
 
 class AuthService {
+  final fba.FirebaseAuth _firebaseAuth;
+  final GoogleSignIn _googleSignin;
+
   AuthService({fba.FirebaseAuth? firebaseAuth, GoogleSignIn? googleSignin})
     : _firebaseAuth = firebaseAuth ?? fba.FirebaseAuth.instance,
       _googleSignin = googleSignin ?? GoogleSignIn.instance;
-
-  final fba.FirebaseAuth _firebaseAuth;
-  final GoogleSignIn _googleSignin;
 
   Stream<User?> get user {
     return _firebaseAuth.authStateChanges().map((firebaseUser) {
