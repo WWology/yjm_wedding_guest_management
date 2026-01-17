@@ -18,6 +18,7 @@ class GuestsBloc extends Bloc<GuestsEvent, GuestsState> {
     : _guestService = guestService,
       super(const .initial()) {
     on<GuestListRequested>(_onGuestListRequested);
+    on<GuestListUpdated>(_onGuestListUpdated);
   }
 
   @override
@@ -30,7 +31,22 @@ class GuestsBloc extends Bloc<GuestsEvent, GuestsState> {
     GuestListRequested event,
     Emitter<GuestsState> emit,
   ) async {
+    emit(const .loading());
     _guestSubscription?.cancel();
-    _guestSubscription = _guestService.guestsSnapshot.listen((guests) {});
+    _guestSubscription = _guestService.first10Guests.listen(
+      (guests) {
+        add(.guestListUpdated(guests: guests));
+      },
+      onError: (_) {
+        emit(const .error());
+      },
+    );
+  }
+
+  FutureOr<void> _onGuestListUpdated(
+    GuestListUpdated event,
+    Emitter<GuestsState> emit,
+  ) {
+    emit(.guestListLoaded(guests: event.guests));
   }
 }
