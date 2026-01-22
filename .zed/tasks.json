@@ -1,0 +1,15 @@
+// Project tasks configuration. See https://zed.dev/docs/tasks for documentation.
+//
+// Example:
+[
+  {
+    "label": "Build Runner",
+    "command": "dart",
+    "args": ["run", "build_runner", "watch", "-d"],
+  },
+  {
+    "label": "Flutter Web Debug",
+    "command": "flutter",
+    "args": ["run", "-d", "chrome"],
+  },
+]
