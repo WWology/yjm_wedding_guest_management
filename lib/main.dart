@@ -6,7 +6,7 @@ import 'package:responsive_framework/responsive_framework.dart';
 
 import 'bloc_observer.dart';
 import 'firebase_options.dart';
-import 'modules/modules.dart';
+import 'modules/auth/auth.dart';
 import 'routes.dart';
 import 'theme.dart';
 import 'util.dart';

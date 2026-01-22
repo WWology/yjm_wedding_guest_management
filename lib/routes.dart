@@ -4,7 +4,7 @@ import 'package:go_router/go_router.dart';
 
 import 'pages/pages.dart';
 import 'common/app_shell.dart';
-import 'modules/modules.dart';
+import 'modules/auth/auth.dart';
 
 part 'routes.g.dart';
 
