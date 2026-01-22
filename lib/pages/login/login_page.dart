@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
-import 'widgets/widgets.dart';
+import 'login_form.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
