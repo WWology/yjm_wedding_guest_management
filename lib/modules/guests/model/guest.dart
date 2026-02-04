@@ -11,7 +11,7 @@ abstract class Guest with _$Guest {
     required String name,
     String? phone,
     String? table,
-    AttendanceStatus? attendanceStatus,
+    RSVPStatus? rsvpStatus,
     DateTime? createdAt,
     DateTime? updatedAt,
   }) = _Guest;
@@ -19,4 +19,4 @@ abstract class Guest with _$Guest {
   factory Guest.fromJson(Map<String, dynamic> json) => _$GuestFromJson(json);
 }
 
-enum AttendanceStatus { attending, notAttending }
+enum RSVPStatus { attending, notAttending }
